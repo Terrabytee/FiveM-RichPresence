@@ -28,18 +28,18 @@ Citizen.CreateThread(function()
 				local CurSpeed = UseKMH and math.ceil(VehSpeed * 3.6) or math.ceil(VehSpeed * 2.236936)
 				local VehName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(PlayerPedId()))))
 				if CurSpeed > 50 then
-					SetRichPresence("Speeding down "..StreetName.." in einem "..VehName)
+					SetRichPresence("Speeding down "..StreetName.." in a "..VehName)
 				elseif CurSpeed <= 50 and CurSpeed > 0 then
-					SetRichPresence("Cruising down "..StreetName.." in einem "..VehName)
+					SetRichPresence("Cruising down "..StreetName.." in a "..VehName)
 				elseif CurSpeed == 0 then
-					SetRichPresence("Parked on "..StreetName.." in einem "..VehName)
+					SetRichPresence("Parked on "..StreetName.." in a "..VehName)
 				end
 			elseif IsPedInAnyHeli(PlayerPedId()) or IsPedInAnyPlane(PlayerPedId()) then
 				local VehName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(PlayerPedId()))))
 				if IsEntityInAir(GetVehiclePedIsUsing(PlayerPedId())) or GetEntityHeightAboveGround(GetVehiclePedIsUsing(PlayerPedId())) > 5.0 then
-					SetRichPresence("Flying over "..StreetName.." in einem "..VehName)
+					SetRichPresence("Flying over "..StreetName.." in a "..VehName)
 				else
-					SetRichPresence("Landed at "..StreetName.." in einem "..VehName)
+					SetRichPresence("Landed at "..StreetName.." in a "..VehName)
 				end
 			elseif IsEntityInWater(PlayerPedId()) then
 				SetRichPresence("Swimming around")
