@@ -1,7 +1,7 @@
 local WaitTime = 2500 -- How often do you want to update the status (In MS)
 
-local DiscordAppId = tonumber(GetConvar("RichAppId", "771836171567366204"))
-local DiscordAppAsset = GetConvar("RichAssetId", "goodliferp")
+local DiscordAppId = tonumber(GetConvar("RichAppId", "805642178617409536"))
+local DiscordAppAsset = GetConvar("RichAssetId", "terrabytee's domain")
 local UseKMH = GetConvar("RichUseKMH", true)
 	
 Citizen.CreateThread(function()
@@ -15,39 +15,39 @@ Citizen.CreateThread(function()
 			StreetName = GetStreetNameFromHashKey(StreetHash)
 			if IsPedOnFoot(PlayerPedId()) and not IsEntityInWater(PlayerPedId()) then
 				if IsPedSprinting(PlayerPedId()) then
-					SetRichPresence("Sprintet auf der "..StreetName)
+					SetRichPresence("Sprinting down "..StreetName)
 				elseif IsPedRunning(PlayerPedId()) then
-					SetRichPresence("Rennt auf der "..StreetName)
+					SetRichPresence("Running down "..StreetName)
 				elseif IsPedWalking(PlayerPedId()) then
-					SetRichPresence("Geht die "..StreetName.." runter")
+					SetRichPresence("Walking down "..StreetName.." runter")
 				elseif IsPedStill(PlayerPedId()) then
-					SetRichPresence("Steht auf der "..StreetName)
+					SetRichPresence("Standing on "..StreetName)
 				end
 			elseif GetVehiclePedIsUsing(PlayerPedId()) ~= nil and not IsPedInAnyHeli(PlayerPedId()) and not IsPedInAnyPlane(PlayerPedId()) and not IsPedOnFoot(PlayerPedId()) and not IsPedInAnySub(PlayerPedId()) and not IsPedInAnyBoat(PlayerPedId()) then
 				local VehSpeed = GetEntitySpeed(GetVehiclePedIsUsing(PlayerPedId()))
 				local CurSpeed = UseKMH and math.ceil(VehSpeed * 3.6) or math.ceil(VehSpeed * 2.236936)
 				local VehName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(PlayerPedId()))))
 				if CurSpeed > 50 then
-					SetRichPresence("Rast über die "..StreetName.." in einem "..VehName)
+					SetRichPresence("Speeding down "..StreetName.." in einem "..VehName)
 				elseif CurSpeed <= 50 and CurSpeed > 0 then
-					SetRichPresence("Fährt über die "..StreetName.." in einem "..VehName)
+					SetRichPresence("Cruising down "..StreetName.." in einem "..VehName)
 				elseif CurSpeed == 0 then
-					SetRichPresence("Parkt auf der "..StreetName.." in einem "..VehName)
+					SetRichPresence("Parked on "..StreetName.." in einem "..VehName)
 				end
 			elseif IsPedInAnyHeli(PlayerPedId()) or IsPedInAnyPlane(PlayerPedId()) then
 				local VehName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(PlayerPedId()))))
 				if IsEntityInAir(GetVehiclePedIsUsing(PlayerPedId())) or GetEntityHeightAboveGround(GetVehiclePedIsUsing(PlayerPedId())) > 5.0 then
-					SetRichPresence("Fliegt über die "..StreetName.." in einem "..VehName)
+					SetRichPresence("Flying over "..StreetName.." in einem "..VehName)
 				else
-					SetRichPresence("Landet auf der "..StreetName.." in einem "..VehName)
+					SetRichPresence("Landed at "..StreetName.." in einem "..VehName)
 				end
 			elseif IsEntityInWater(PlayerPedId()) then
-				SetRichPresence("Schwimmt rum")
+				SetRichPresence("Swimming around")
 			elseif IsPedInAnyBoat(PlayerPedId()) and IsEntityInWater(GetVehiclePedIsUsing(PlayerPedId())) then
 				local VehName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(PlayerPedId()))))
-				SetRichPresence("Segelt in einem "..VehName)
+				SetRichPresence("Sailing around in a "..VehName)
 			elseif IsPedInAnySub(PlayerPedId()) and IsEntityInWater(GetVehiclePedIsUsing(PlayerPedId())) then
-				SetRichPresence("In einem U-Boot")
+				SetRichPresence("In a yellow submarine")
 			end
 		end
 	end
