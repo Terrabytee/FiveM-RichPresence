@@ -1,7 +1,7 @@
 local WaitTime = 2500 -- How often do you want to update the status (In MS)
 
 local DiscordAppId = tonumber(GetConvar("RichAppId", "805642178617409536"))
-local DiscordAppAsset = GetConvar("RichAssetId", "terrabytee's domain")
+local DiscordAppAsset = GetConvar("RichAssetId", "snivavy_no_watermark")
 local UseKMH = GetConvar("RichUseKMH", true)
 	
 Citizen.CreateThread(function()
